@@ -1,0 +1,147 @@
+@use '../_layout/vars' as vars;
+@use '../_layout/mixins' as mixin;
+
+.info{
+    background-color: vars.$info-color;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    height: 35%;
+    // backdrop-filter: blur(10px);
+    border: 1px solid rgba(25,24,27,.18);
+
+    &__close{
+        display:none;
+    }
+
+    &__div,&__form{
+        @include mixin.flex(center, center, column);
+    }
+
+    &__input{
+        background-color: vars.$white;
+        border-radius: 1rem;
+        padding: .4rem .6rem;
+        border: none;
+        outline: none;
+        color: vars.$color1;
+
+        &::placeholder{
+            color: vars.$color1;
+        }
+    }
+
+    &__button{
+        margin-top: 2rem;
+        background-color: vars.$color1;
+        padding: .4rem .8rem;
+        border-radius: .4rem;
+        cursor: pointer;
+        transition: .5s;
+        color: #fff;
+        font-size: .9rem;
+
+        &:hover{
+            transform: translateY(-12px);
+        }
+    }
+
+    &__img{
+        width: 5rem;
+        margin-bottom: 1rem;
+    }
+    &__p{
+        text-align: center;
+        color: vars.$white;
+        font-size: 1.2rem;
+
+        &:last-child{
+            margin-top: 1rem;
+        }
+    }
+
+
+    &__h3{
+        font-size: 2rem;
+        color: vars.$white;
+
+        &:last-child{
+            margin-top: 1rem;
+        }
+    }
+
+    &__span{
+        font-size: 1.5rem;
+    }
+
+
+}
+
+@media (max-width:768px){
+    .info{
+        background-color: vars.$color1;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        transform: translateX(-100vw);
+        height: 100vh;
+        transition: .3s;
+        padding: 1rem;
+        grid-template-areas: 
+        'close close'
+        'search search'
+        'icon grade'
+        'humidity wind'
+        'co2 co2';
+        row-gap: .4rem;
+
+
+        &__div:nth-child(2){
+            grid-area: search;
+        }
+ 
+        &__div:nth-child(3){
+            grid-area: icon;
+        }
+
+        &__div:nth-child(4){
+            grid-area: grade;
+        }
+
+        &__div:nth-child(5){
+            grid-area: humidity;
+        }
+
+        &__div:nth-child(6){
+            grid-area: wind;
+        }
+
+        &__div:nth-child(7){
+            grid-area: co2;
+        }
+
+        
+
+        &--active{
+            transform: translateX(0);
+        }
+
+        &__close{
+            display: block;
+            font-size: 1.5rem;
+            margin-left: auto;
+            color: #fff;
+            cursor: pointer;
+            grid-area: close;
+        }
+
+        &__button{
+            background-color: #fff;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+    }
+}

@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img,
+picture,
+video,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  display: block;
+}
+
+p a {
+  display: inline;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+i,
+b,
+u {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+::selection {
+  background-color: black;
+}
+
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  hyphens: auto;
+  background-color: transparent;
+  display: block;
+  color: inherit;
+}
+
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-X: hidden;
+  background: url("../../assets/wpp.jpg") no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 2.5rem 1.5rem;
+}
+.day__h3 {
+  font-size: 3rem;
+  color: #fff;
+}
+.day__span {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+.day__p {
+  margin-top: 0.5rem;
+  color: #fff;
+}
+.day__button {
+  display: none;
+  margin-top: 5rem;
+  background-color: #4993DA;
+  padding: 0.8rem 1.4rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: 0.5s;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .day {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .day__div:nth-child(2) {
+    margin-top: 4rem;
+  }
+  .day__h3 {
+    text-align: center;
+    font-size: 5rem;
+  }
+  .day__span {
+    font-size: 2.8rem;
+  }
+  .day__p {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .day__button {
+    display: block;
+  }
+}
+.day__h3--city {
+  font-size: 2rem;
+  text-align: end;
+}
+.day__p--country {
+  font-size: 1.2rem;
+  text-align: end;
+}
+
+@media (max-width: 768px) {
+  .day__h3--city {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .day__p--country {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+.info {
+  background-color: rgba(24, 25, 27, 0.5);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  height: 35%;
+  border: 1px solid rgba(25, 24, 27, 0.18);
+}
+.info__close {
+  display: none;
+}
+.info__div, .info__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.info__input {
+  background-color: #f4f4f4;
+  border-radius: 1rem;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  outline: none;
+  color: #4993DA;
+}
+.info__input::placeholder {
+  color: #4993DA;
+}
+.info__button {
+  margin-top: 2rem;
+  background-color: #4993DA;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: 0.5s;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.info__button:hover {
+  transform: translateY(-12px);
+}
+.info__img {
+  width: 5rem;
+  margin-bottom: 1rem;
+}
+.info__p {
+  text-align: center;
+  color: #f4f4f4;
+  font-size: 1.2rem;
+}
+.info__p:last-child {
+  margin-top: 1rem;
+}
+.info__h3 {
+  font-size: 2rem;
+  color: #f4f4f4;
+}
+.info__h3:last-child {
+  margin-top: 1rem;
+}
+.info__span {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .info {
+    background-color: #4993DA;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    transform: translateX(-100vw);
+    height: 100vh;
+    transition: 0.3s;
+    padding: 1rem;
+    grid-template-areas: "close close" "search search" "icon grade" "humidity wind" "co2 co2";
+    row-gap: 0.4rem;
+  }
+  .info__div:nth-child(2) {
+    grid-area: search;
+  }
+  .info__div:nth-child(3) {
+    grid-area: icon;
+  }
+  .info__div:nth-child(4) {
+    grid-area: grade;
+  }
+  .info__div:nth-child(5) {
+    grid-area: humidity;
+  }
+  .info__div:nth-child(6) {
+    grid-area: wind;
+  }
+  .info__div:nth-child(7) {
+    grid-area: co2;
+  }
+  .info--active {
+    transform: translateX(0);
+  }
+  .info__close {
+    display: block;
+    font-size: 1.5rem;
+    margin-left: auto;
+    color: #fff;
+    cursor: pointer;
+    grid-area: close;
+  }
+  .info__button {
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 1rem;
+  }
+}
+.info__img--icon {
+  width: 4rem;
+  height: 4rem;
+}
+.info__p--type {
+  font-size: 0.8rem;
+}
+.info__p--number {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=style.css.map */

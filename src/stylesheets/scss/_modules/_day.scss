@@ -1,0 +1,63 @@
+@use '../_layout/vars' as vars;
+@use '../_layout/mixins' as mixin;
+
+.day{
+    @include mixin.flex(space-between, center, row);
+    padding: 2.5rem 1.5rem;
+
+    &__h3{
+        font-size: 3rem;
+        color: #fff;
+    }
+
+    &__span{
+        font-size: 2rem;
+        vertical-align: middle;
+    }
+
+    &__p{
+        margin-top: .5rem;
+        color: #fff;
+    }
+
+    &__button{
+        display: none;
+        margin-top: 5rem;
+        background-color: vars.$color1;
+        padding: .8rem 1.4rem;
+        border-radius: .4rem;
+        cursor: pointer;
+        transition: .5s;
+        color: #fff;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px){
+    .day{
+        height: 100vh;
+        @include mixin.flex(center, center, column);
+        
+        &__div:nth-child(2){
+            margin-top: 4rem;
+        }
+
+        &__h3{
+            text-align: center;
+            font-size: 5rem;
+        }
+
+        &__span{
+        font-size: 2.8rem;
+        }
+
+        &__p{
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        &__button{
+            display: block;
+        }
+    }
+}

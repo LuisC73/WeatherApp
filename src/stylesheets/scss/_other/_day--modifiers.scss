@@ -1,0 +1,29 @@
+@use '../_layout/vars'as vars;
+@use '../_layout/mixins'as mixin;
+
+.day {
+  &__h3--city {
+    font-size: 2rem;
+    text-align: end;
+  }
+
+  &__p--country {
+    font-size: 1.2rem;
+    text-align: end;
+  }
+}
+
+@media (max-width: 768px){
+
+  .day{
+    &__h3--city {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  
+    &__p--country {
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+}

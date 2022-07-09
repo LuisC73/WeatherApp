@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="src/stylesheets/css/style.css">
+</head>
+<body>
+    <main>
+        <div class="day">
+            <div class="day__div">
+                <h3 class="day__h3"><span id="weather-hour">hour</span>:<span id="weather-minutes">minutes </span><span class="day__span" id="weather-hourType">AM</span></h3>
+                <p class="day__p"><span id="weather-day">Sabado</span><span id="weather-mounth"> Julio 09</span><span id="weather-year"> 2022</span></p>
+            </div>
+            <div class="day__div">
+                <h3 class="day__h3 day__h3--city" id="weather-city">City</h3>
+                <p class="day__p day__p--country" id="weather-country">Country</p>
+            </div>
+            <input type="button" value="Get Started" class="day__button">
+        </div>
+
+        <div class="info">
+            <p class="info__close">X</p>
+            <div class="info__div">
+                <form action="" class="info__form">
+                    <input type="search" placeholder="Search city..." class="info__input" id="weather-input" autocomplete="off">
+                    <input type="submit" value="Search" class="info__button" id="weather-button">
+                </form>
+            </div>
+            <div class="info__div">
+                <img src="" alt="icon" class="info__img" id="weather-icon">
+                <p class="info__p" id="weather-value"></p>
+            </div>
+            <div class="info__div">
+                <h3 class="info__h3"><span id="weather-grade"></span>° <span class="info__span">C</span></h3>
+                <h3 class="info__h3"><span  id="weather-gradeAlternate"></span>° <span class="info__span">C</span></h3>
+            </div>
+            <div class="info__div">
+                <img src="./src/assets/humedad.png" alt="humedad" class="info__img info__img--icon">
+                <p class="info__p info__p--type">Humidity (%)</p>
+                <p class="info__p info__p--number" id="weather-humidity">--</p>
+            </div>
+            <div class="info__div">
+                <img src="./src/assets/wind.png" alt="" class="info__img info__img--icon">
+                <p class="info__p info__p--type">Wind (km/h)</p>
+                <p class="info__p info__p--number" id="weather-wind">--</p>
+            </div>
+            <div class="info__div">
+                <img src="./src/assets/pressure-gauge.png" alt="" class="info__img info__img--icon">
+                <p class="info__p info__p--type">Pressure (hPa)</p>
+                <p class="info__p info__p--number" id="weather-pressure">--</p>
+            </div>
+        </div>
+    </main>
+    
+
+    <script src="./src/js/main.js"></script>
+</body>
+</html>
