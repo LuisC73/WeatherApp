@@ -1,9 +1,7 @@
 
 <h1 align="center">WeatherApp</h1>
 
-## Overview
-
-![me](https://user-images.githubusercontent.com/80079884/178081932-5b4093f8-60ea-467f-ae86-69ee60a70006.jpg)
+![weather](https://user-images.githubusercontent.com/80079884/178126928-1c3d46b4-5c6b-42c8-a5f9-13894fa14774.jpg)
 
 ### Built With
 
