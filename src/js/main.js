@@ -2,17 +2,13 @@ const APIKEY = '3b27df4c7ffe0c97fba50ee7df8e8d6c',
 d = document;
 
 let hourWeather = d.getElementById('weather-hour'),
-    minutesWeather = d.getElementById('weather-minutes'),
     hourType = d.getElementById('weather-hourType'),
-    dayWeather = d.getElementById('weather-day'),
-    mounthWeather = d.getElementById('weather-mounth'),
-    yearWeather = d.getElementById('weather-year'),
+    dateWeather = d.getElementById('weather-date'),
     cityWeather = d.getElementById('weather-city'),
     countryWeather = d.getElementById('weather-country'),
     iconWeather = d.getElementById('weather-icon'),
     valueWeather = d.getElementById('weather-value'),
-    gradeWeather = d.getElementById('weather-grade'),
-    gradeWeatherAlternate = d.getElementById('weather-gradeAlternate'),
+    temperatureWeather = d.getElementById('weather-temperature'),
     humidityWeather = d.getElementById('weather-humidity'),
     windWeather = d.getElementById('weather-wind'),
     pressureWeather = d.getElementById('weather-pressure');
@@ -39,7 +35,7 @@ searchButton.addEventListener('click', e =>{
     console.log(searchInput.value)
 })
 
-const dayWeek = (day,month,year) =>{
+const dateFunction= (d) =>{
     const weekDay = [
         "Sunday",
         "Monday",
@@ -49,7 +45,39 @@ const dayWeek = (day,month,year) =>{
         "Friday",
         "Saturday"
     ];
-    return weekDay[new Date(`${day}/${month}/${year}`)]
+    
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
+
+    let day = weekDay[d.getDay()],
+    date = d.getDate(),
+    month = months[d.getMonth()],
+    year = d.getFullYear();
+
+    return `${day}, ${month} ${date}, ${year}`;
+}
+
+
+const hourFunction = (info) =>{  
+    const hour = new Date(info.dt*1000).getHours(),
+        minutes = new Date(info.dt*1000).getMinutes();
+
+    let hr = (hour>12) ? hour - 12 : hour;
+    let am = (hour>12) ? "PM" : "AM"
+        
+    return `${hr}:${minutes} ${am}`
 }
 
 const getWeather = async (city) =>{
@@ -64,7 +92,7 @@ const getWeather = async (city) =>{
         const{dt} = dataCity.dt;
         const{name} = dataCity;
         const{country} = dataCity.sys;
-        const{temp,temp_min,humidity,pressure} = dataCity.main;
+        const{temp,humidity,pressure} = dataCity.main;
         const{speed} = dataCity.wind;
         const{id,description} = dataCity.weather[0];
 
@@ -74,8 +102,11 @@ const getWeather = async (city) =>{
         pressureWeather.textContent = pressure;
         windWeather.textContent = speed;
         valueWeather.textContent = description;
-        gradeWeather.textContent = Math.round(temp - 273);
-        gradeWeatherAlternate.textContent = Math.round(temp_min - 273);
+        temperatureWeather.textContent = Math.round(temp - 273);
+
+        const today = new Date();
+        dateWeather.textContent = dateFunction(today);
+        hourWeather.textContent = hourFunction(dataCity)
 
         if(id<300 && id>200){
             iconWeather.src = './src/assets/Thunderstorm.png';
@@ -88,6 +119,8 @@ const getWeather = async (city) =>{
         }else if(id<800 && id>700){
             iconWeather.src = './src/assets/HeavyCloud.png';
         }else if(id==800){
+            iconWeather.src = './src/assets/Clear.png';
+        }else{
             iconWeather.src = './src/assets/LightCloud.png';
         }
 
@@ -114,25 +147,27 @@ window.addEventListener('load',()=>{
             .then(data =>{
                 const{name} = data;
                 const{country} = data.sys;
-                const{temp,temp_min,humidity,pressure} = data.main;
+                const{temp,humidity,pressure} = data.main;
                 const{speed} = data.wind;
                 const{id,description} = data.weather[0];
                 // const{stations} = data.stations;
                 // console.log(stations)
-                let date = new Date()
+                
 
                 console.log(data)
-                hourWeather.textContent = date.getHours();
-                minutesWeather.textContent = date.getMinutes();
-                yearWeather.textContent = date.getFullYear();
+                // hourWeather.textContent = date.getHours();
                 cityWeather.textContent = name;
                 countryWeather.textContent = country;
                 humidityWeather.textContent = humidity;
                 pressureWeather.textContent = pressure;
                 windWeather.textContent = speed;
                 valueWeather.textContent = description;
-                gradeWeather.textContent = Math.round(temp - 273);
-                gradeWeatherAlternate.textContent = Math.round(temp_min - 273);
+                temperatureWeather.textContent = Math.round(temp - 273);
+
+                const today = new Date();
+                dateWeather.innerText = dateFunction(today);          
+                hourWeather.textContent = hourFunction(data)
+
                 if(id<300 && id>200){
                     iconWeather.src = './src/assets/Thunderstorm.png';
                 }else if(id<400 && id>300){
@@ -143,7 +178,9 @@ window.addEventListener('load',()=>{
                     iconWeather.src = './src/assets/Snow.png';
                 }else if(id<800 && id>700){
                     iconWeather.src = './src/assets/HeavyCloud.png';
-                }else if(id>800){
+                }else if(id==800){
+                    iconWeather.src = './src/assets/Clear.png';
+                }else{
                     iconWeather.src = './src/assets/LightCloud.png';
                 }
 
@@ -151,3 +188,6 @@ window.addEventListener('load',()=>{
         })   
     }
 })    
+
+
+
