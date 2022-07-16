@@ -20,6 +20,7 @@
 - [Html]
 - [Scss]
 - [JavaScript]
+- [Api Fetch]
 
 
 ## How To Use
